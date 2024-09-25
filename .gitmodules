@@ -1,0 +1,3 @@
+[submodule "kgl"]
+	path = kgl
+	url = https://github.com/block36underscore/kgl.git
