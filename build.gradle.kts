@@ -1,10 +1,9 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.konan.target.HostManager
 
 plugins {
-    kotlin("multiplatform") version "2.0.20"
+    kotlin("jvm") version "2.0.20"
     application
     kotlin("plugin.serialization") version "2.0.20"
 }
@@ -14,11 +13,9 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
 }
 
 val useSingleTarget: Boolean by extra { System.getProperty("idea.active") == "true" }
-val ktorIoVersion: String by extra("1.4.0")
 val lwjglVersion: String by extra("3.3.4")
 val lwjglNatives: String by extra {
     when {
@@ -70,11 +67,5 @@ application {
 }
 
 kotlin {
-    jvm {
-        withJava()
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_21)
-        }
-    }
+    jvmToolchain(21)
 }
