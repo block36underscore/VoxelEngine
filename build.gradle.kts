@@ -39,13 +39,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.7.1")
 
-//    implementation(project(":kgl:kgl-core"))
-//    implementation(project(":kgl:kgl-glfw"))
-//    implementation(project(":kgl:kgl-glfw-static"))
-//    implementation(project(":kgl:kgl-vulkan"))
-//    implementation(project(":kgl:kgl-glfw-vulkan"))
-//    implementation(project(":kgl:kgl-stb"))
-
     implementation("io.github.kotlin-graphics:kotlin-unsigned:3.3.32")
 
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
