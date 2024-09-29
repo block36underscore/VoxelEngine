@@ -9,6 +9,10 @@ fun main() {
     initWindow()
 
     mainLoop@while (true) {
+        if (glfwWindowShouldClose(Window)) break@mainLoop
+
+        glfwPollEvents()
+
         Thread.sleep(WindowInfo.LOOP_PERIOD)
     }
 }
@@ -47,5 +51,7 @@ private fun initVulkan() {
 }
 
 private fun cleanup() {
+    glfwDestroyWindow(Window)
 
+    glfwTerminate()
 }
