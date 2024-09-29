@@ -4,24 +4,161 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04514774-c5a6-4d49-91b8-b14459f06ca5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kgl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+    <list default="true" id="04514774-c5a6-4d49-91b8-b14459f06ca5" name="Changes" comment="Handle case where collection is empty">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Voxel_Engine_jvm_1_0_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl" beforeDir="false" afterPath="$PROJECT_DIR$/kgl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-core/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-core/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw-vulkan/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw-vulkan/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Cursor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Cursor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Glfw.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Glfw.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Hat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Hat.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Image.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Mod.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Mod.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Window.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/commonMain/kotlin/com/kgl/glfw/Window.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Cursor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Cursor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Hat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Hat.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Mod.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Mod.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Window.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/jvmMain/kotlin/com/kgl/glfw/Window.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Cursor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Cursor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Hat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Hat.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Mod.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Mod.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Window.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-glfw/src/nativeMain/kotlin/com/kgl/glfw/Window.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-opengl/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-opengl/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-stb/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-stb/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-stb/src/commonMain/kotlin/com/kgl/stb/STBIOCallbacks.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-stb/src/commonMain/kotlin/com/kgl/stb/STBIOCallbacks.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-stb/src/commonMain/kotlin/com/kgl/stb/STBImage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-stb/src/commonMain/kotlin/com/kgl/stb/STBImage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-stb/src/jvmMain/kotlin/com/kgl/stb/STBImage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-stb/src/jvmMain/kotlin/com/kgl/stb/STBImage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-stb/src/nativeMain/kotlin/com/kgl/stb/STBImage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-stb/src/nativeMain/kotlin/com/kgl/stb/STBImage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/AccelerationStructureNV.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/AccelerationStructureNV.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Buffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Buffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/BufferView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/BufferView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/CommandBuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/CommandBuffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/CommandPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/CommandPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DebugReportCallbackEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DebugReportCallbackEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DebugUtilsMessengerEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DebugUtilsMessengerEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorSet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorSetLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorSetLayout.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorUpdateTemplate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DescriptorUpdateTemplate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Device.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Device.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DeviceMemory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DeviceMemory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DisplayKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DisplayKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DisplayModeKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/DisplayModeKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Event.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Event.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Fence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Fence.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Framebuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Framebuffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Image.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ImageView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ImageView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/IndirectCommandsLayoutNVX.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/IndirectCommandsLayoutNVX.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Instance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Instance.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ObjectTableNVX.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ObjectTableNVX.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/PhysicalDevice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/PhysicalDevice.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Pipeline.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Pipeline.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/PipelineCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/PipelineCache.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/PipelineLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/PipelineLayout.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/QueryPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/QueryPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Queue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Queue.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/RenderPass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/RenderPass.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Sampler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Sampler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/SamplerYcbcrConversion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/SamplerYcbcrConversion.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Semaphore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/Semaphore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ShaderModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ShaderModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/SurfaceKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/SurfaceKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/SwapchainKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/SwapchainKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ValidationCacheEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/commonMain/kotlin/com/kgl/vulkan/handles/ValidationCacheEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/AccelerationStructureNV.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/AccelerationStructureNV.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Buffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Buffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/BufferView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/BufferView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/CommandBuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/CommandBuffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/CommandPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/CommandPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DebugReportCallbackEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DebugReportCallbackEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DebugUtilsMessengerEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DebugUtilsMessengerEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorSet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorSetLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorSetLayout.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorUpdateTemplate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DescriptorUpdateTemplate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Device.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Device.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DeviceMemory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DeviceMemory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DisplayKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DisplayKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DisplayModeKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/DisplayModeKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Event.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Event.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Fence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Fence.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Framebuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Framebuffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Image.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ImageView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ImageView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/IndirectCommandsLayoutNVX.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/IndirectCommandsLayoutNVX.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Instance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Instance.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ObjectTableNVX.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ObjectTableNVX.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/PhysicalDevice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/PhysicalDevice.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Pipeline.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Pipeline.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/PipelineCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/PipelineCache.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/PipelineLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/PipelineLayout.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/QueryPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/QueryPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Queue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Queue.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/RenderPass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/RenderPass.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Sampler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Sampler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/SamplerYcbcrConversion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/SamplerYcbcrConversion.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Semaphore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/Semaphore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ShaderModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ShaderModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/SurfaceKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/SurfaceKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/SwapchainKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/SwapchainKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ValidationCacheEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/handles/ValidationCacheEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/utils/ConvertUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/jvmMain/kotlin/com/kgl/vulkan/utils/ConvertUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/AccelerationStructureNV.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/AccelerationStructureNV.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Buffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Buffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/BufferView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/BufferView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/CommandBuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/CommandBuffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/CommandPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/CommandPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DebugReportCallbackEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DebugReportCallbackEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DebugUtilsMessengerEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DebugUtilsMessengerEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorSet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorSetLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorSetLayout.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorUpdateTemplate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DescriptorUpdateTemplate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Device.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Device.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DeviceMemory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DeviceMemory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DisplayKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DisplayKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DisplayModeKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/DisplayModeKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Event.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Event.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Fence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Fence.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Framebuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Framebuffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Image.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ImageView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ImageView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/IndirectCommandsLayoutNVX.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/IndirectCommandsLayoutNVX.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Instance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Instance.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ObjectTableNVX.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ObjectTableNVX.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/PhysicalDevice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/PhysicalDevice.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Pipeline.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Pipeline.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/PipelineCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/PipelineCache.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/PipelineLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/PipelineLayout.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/QueryPool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/QueryPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Queue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Queue.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/RenderPass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/RenderPass.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Sampler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Sampler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/SamplerYcbcrConversion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/SamplerYcbcrConversion.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Semaphore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/Semaphore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ShaderModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ShaderModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/SurfaceKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/SurfaceKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/SwapchainKHR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/SwapchainKHR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ValidationCacheEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/handles/ValidationCacheEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/utils/ConvertUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/kgl-vulkan/src/nativeMain/kotlin/com/kgl/vulkan/utils/ConvertUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kgl/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/kgl/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +188,12 @@
                 <item name="Voxel-Engine" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Voxel-Engine" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="run" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -66,8 +209,20 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/kgl" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;block36underscore&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/block36underscore/kgl.git&quot;,
+    &quot;accountId&quot;: &quot;6ae2dc3a-7202-4e50-94aa-ea69d8c9d32d&quot;
+  }
+}</component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -82,17 +237,48 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Gradle.Voxel-Engine [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Voxel-Engine [jvmRun].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Voxel-Engine [run].executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/a/IdeaProjects/Voxel-Engine/kgl&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.Kotlin&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/kgl" />
+      <recent name="$PROJECT_DIR$/kgl/gradle/wrapper" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Voxel-Engine [run]">
+    <configuration name="Voxel-Engine [jvmRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jvmRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Voxel-Engine [run]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -120,6 +306,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Voxel-Engine [jvmRun]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -130,6 +321,19 @@
       <option name="presentableId" value="Default" />
       <updated>1726857104752</updated>
     </task>
+    <task id="LOCAL-00001" summary="Handle case where collection is empty">
+      <option name="closed" value="true" />
+      <created>1727579212125</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727579212125</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Handle case where collection is empty" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handle case where collection is empty" />
   </component>
 </project>

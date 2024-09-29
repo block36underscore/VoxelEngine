@@ -1,4 +1,7 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
+import org.jetbrains.kotlin.konan.target.HostManager
 
 plugins {
     kotlin("multiplatform") version "2.0.20"
@@ -14,10 +17,20 @@ repositories {
     maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
 }
 
-val lwjglVersion = "3.3.4"
+val useSingleTarget: Boolean by extra { System.getProperty("idea.active") == "true" }
+val ktorIoVersion: String by extra("1.4.0")
+val lwjglVersion: String by extra("3.3.4")
+val lwjglNatives: String by extra {
+    when {
+        HostManager.hostIsLinux -> "natives-linux"
+        HostManager.hostIsMac -> "natives-macos"
+        HostManager.hostIsMingw -> "natives-windows"
+        else -> error("Host platform not supported")
+    }
+}
+
 val jomlVersion = "1.10.7"
 val `joml-primitivesVersion` = "1.10.0"
-val lwjglNatives = "natives-linux"
 
 dependencies {
     testImplementation(kotlin("test"))
@@ -64,5 +77,11 @@ application {
 }
 
 kotlin {
-    jvm()
+    jvm {
+        withJava()
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
+    }
 }
