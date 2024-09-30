@@ -1,13 +1,13 @@
 package gay.block36.voxel
 
+import gay.block36.voxel.vulkan.DebugMessenger
+import gay.block36.voxel.vulkan.VulkanInfo
+import gay.block36.voxel.vulkan.destroyDebugUtilsMessengerEXT
+import gay.block36.voxel.vulkan.initVulkan
 import org.lwjgl.glfw.GLFW.*
-import org.lwjgl.glfw.GLFWVulkan.glfwGetRequiredInstanceExtensions
-import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil.NULL
 import org.lwjgl.vulkan.VK10.*
-import org.lwjgl.vulkan.VkApplicationInfo
 import org.lwjgl.vulkan.VkInstance
-import org.lwjgl.vulkan.VkInstanceCreateInfo
 import kotlin.properties.Delegates
 
 
@@ -56,35 +56,9 @@ private fun initWindow() {
     }
 }
 
-private fun initVulkan() {
-    MemoryStack.stackPush().run {
-        val appInfo = VkApplicationInfo.calloc(this).apply {
-            sType(VK_STRUCTURE_TYPE_APPLICATION_INFO)
-            pApplicationName(this@run.UTF8Safe(WindowInfo.TITLE))
-            applicationVersion(VK_MAKE_VERSION(1, 0, 0))
-            pEngineName(this@run.UTF8Safe("No Engine"))
-            engineVersion(VK_MAKE_VERSION(1, 0, 0))
-            apiVersion(VK_API_VERSION_1_0)
-        }
-
-        val createInfo = VkInstanceCreateInfo.calloc(this).apply {
-            sType(VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO)
-            pApplicationInfo(appInfo)
-            ppEnabledExtensionNames(glfwGetRequiredInstanceExtensions())
-            ppEnabledLayerNames(null)
-        }
-
-        val instancePtr = this.mallocPointer(1)
-
-        if (vkCreateInstance(createInfo, null, instancePtr) != VK_SUCCESS) {
-            throw RuntimeException("Failed to create vulkan instance")
-        }
-
-        Instance = VkInstance(instancePtr.get(0), createInfo)
-    }
-}
-
 private fun cleanup() {
+    if (VulkanInfo.VALIDATION_LAYERS_ENABLED)
+        destroyDebugUtilsMessengerEXT(Instance, DebugMessenger, null)
 
     vkDestroyInstance(Instance, null)
 
