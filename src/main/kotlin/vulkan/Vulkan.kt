@@ -4,7 +4,6 @@ import gay.block36.voxel.Instance
 import gay.block36.voxel.WindowInfo
 import gay.block36.voxel.vulkan.VulkanInfo.VALIDATION_LAYERS
 import org.lwjgl.PointerBuffer
-import org.lwjgl.glfw.GLFWVulkan
 import org.lwjgl.glfw.GLFWVulkan.glfwGetRequiredInstanceExtensions
 import org.lwjgl.system.Configuration.DEBUG
 import org.lwjgl.system.MemoryStack

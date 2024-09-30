@@ -37,9 +37,7 @@ var Window: Long by Delegates.notNull()
 lateinit var Instance: VkInstance
 
 private fun initWindow() {
-    if (!glfwInit()) {
-        throw RuntimeException("Cannot init GLFW")
-    }
+    if (!glfwInit()) throw RuntimeException("Cannot init GLFW")
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API)
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE)
@@ -51,9 +49,7 @@ private fun initWindow() {
         NULL,
         NULL)
 
-    if (Window == NULL) {
-        throw RuntimeException("Cannot create window");
-    }
+    if (Window == NULL) throw RuntimeException("Cannot create window")
 }
 
 private fun cleanup() {
