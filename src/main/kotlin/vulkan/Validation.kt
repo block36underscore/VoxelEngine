@@ -78,13 +78,12 @@ fun validationLayersSupported(): Boolean {
             .map(VkLayerProperties::layerNameString)
 
         return VulkanInfo.VALIDATION_LAYERS?.let { validationLayers ->
-            availableLayerNames.containsAll(validationLayers).also {
-                println("Available Layers: ")
-                availableLayerNames.forEach(::println)
             availableLayerNames.containsAll(validationLayers).also { available ->
                 if (!available) {
                     println("Available Layers:")
                     availableLayerNames.forEach(::println)
+                    println("Needed layers:")
+                    validationLayers.forEach(::println)
                 }
             }
         } ?: true
