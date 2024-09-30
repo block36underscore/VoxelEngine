@@ -81,6 +81,11 @@ fun validationLayersSupported(): Boolean {
             availableLayerNames.containsAll(validationLayers).also {
                 println("Available Layers: ")
                 availableLayerNames.forEach(::println)
+            availableLayerNames.containsAll(validationLayers).also { available ->
+                if (!available) {
+                    println("Available Layers:")
+                    availableLayerNames.forEach(::println)
+                }
             }
         } ?: true
     }
