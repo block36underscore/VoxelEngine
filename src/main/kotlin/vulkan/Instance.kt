@@ -31,7 +31,7 @@ fun createInstance() {
                 ppEnabledLayerNames(
                     stack.mallocPointer(VulkanInfo.VALIDATION_LAYERS.size)
                         .apply(
-                            layers@ fun PointerBuffer.() {
+                            layers@fun PointerBuffer.() {
                                 VulkanInfo.VALIDATION_LAYERS
                                     .mapNotNull(stack::UTF8Safe)
                                     .forEach(this@layers::put)
