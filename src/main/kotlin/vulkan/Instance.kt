@@ -30,13 +30,11 @@ fun createInstance() {
             if (VulkanInfo.VALIDATION_LAYERS_ENABLED && VulkanInfo.VALIDATION_LAYERS != null) {
                 ppEnabledLayerNames(
                     stack.mallocPointer(VulkanInfo.VALIDATION_LAYERS.size)
-                        .apply(
-                            layers@fun PointerBuffer.() {
-                                VulkanInfo.VALIDATION_LAYERS
-                                    .mapNotNull(stack::UTF8Safe)
-                                    .forEach(this@layers::put)
-                            }
-                        )
+                        .apply layers@ {
+                            VulkanInfo.VALIDATION_LAYERS
+                                .mapNotNull(stack::UTF8Safe)
+                                .forEach(this@layers::put)
+                        }
                 )
             }
         }
