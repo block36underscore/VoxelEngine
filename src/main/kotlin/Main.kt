@@ -52,10 +52,12 @@ private fun initWindow() {
 }
 
 private fun cleanup() {
-    if (VulkanInfo.VALIDATION_LAYERS_ENABLED)
-        destroyDebugUtilsMessengerEXT(Instance, DebugMessenger, null)
+    if (::Instance.isInitialized) {
+        if (VulkanInfo.VALIDATION_LAYERS_ENABLED)
+            destroyDebugUtilsMessengerEXT(Instance, DebugMessenger, null)
 
-    vkDestroyInstance(Instance, null)
+        vkDestroyInstance(Instance, null)
+    }
 
     glfwDestroyWindow(Window)
 
