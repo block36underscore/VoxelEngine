@@ -1,6 +1,7 @@
 package gay.block36.voxel.vulkan
 
 import gay.block36.voxel.Instance
+import gay.block36.voxel.vulkan.DebugCallback.debugCallback
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.vulkan.*
@@ -8,16 +9,7 @@ import java.nio.LongBuffer
 import kotlin.properties.Delegates
 
 var DebugMessenger: Long by Delegates.notNull()
-fun debugCallback(
-    severity: Int,
-    type: Int,
-    callBackData: Long,
-    userData: Long
-): Int {
-    System.err.println("Validation layer: ${VkDebugUtilsMessengerCallbackEXT.create(callBackData)}")
 
-    return VK10.VK_FALSE
-}
 
 fun populateDebugMessengerCreateInfo(debugCreateInfo: VkDebugUtilsMessengerCreateInfoEXT) {
     debugCreateInfo.sType(EXTDebugUtils.VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT)

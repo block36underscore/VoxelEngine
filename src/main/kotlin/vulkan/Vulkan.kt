@@ -16,4 +16,5 @@ object VulkanInfo {
 fun initVulkan() {
     createInstance()
     setupDebugMessenger()
+    pickPhysicalDevice()
 }

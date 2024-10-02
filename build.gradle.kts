@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.konan.target.HostManager
 
 plugins {
@@ -13,9 +11,12 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+
+    }
 }
 
-val useSingleTarget: Boolean by extra { System.getProperty("idea.active") == "true" }
 val lwjglVersion: String by extra("3.3.4")
 val lwjglNatives: String by extra {
     when {
@@ -40,19 +41,19 @@ dependencies {
 
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
 
-    implementation("org.lwjgl", "lwjgl")
-    implementation("org.lwjgl", "lwjgl-assimp")
-    implementation("org.lwjgl", "lwjgl-glfw")
-    implementation("org.lwjgl", "lwjgl-openal")
-    implementation("org.lwjgl", "lwjgl-stb")
-    implementation("org.lwjgl", "lwjgl-vma")
-    implementation("org.lwjgl", "lwjgl-vulkan")
-    runtimeOnly("org.lwjgl", "lwjgl", classifier = lwjglNatives)
-    runtimeOnly("org.lwjgl", "lwjgl-assimp", classifier = lwjglNatives)
-    runtimeOnly("org.lwjgl", "lwjgl-glfw", classifier = lwjglNatives)
-    runtimeOnly("org.lwjgl", "lwjgl-openal", classifier = lwjglNatives)
-    runtimeOnly("org.lwjgl", "lwjgl-stb", classifier = lwjglNatives)
-    runtimeOnly("org.lwjgl", "lwjgl-vma", classifier = lwjglNatives)
+    implementation("org.lwjgl:lwjgl:$lwjglVersion")
+    implementation("org.lwjgl:lwjgl-assimp:$lwjglVersion")
+    implementation("org.lwjgl:lwjgl-glfw:$lwjglVersion")
+    implementation("org.lwjgl:lwjgl-openal:$lwjglVersion")
+    implementation("org.lwjgl:lwjgl-stb:$lwjglVersion")
+    implementation("org.lwjgl:lwjgl-vma:$lwjglVersion")
+    implementation("org.lwjgl:lwjgl-vulkan:$lwjglVersion")
+    runtimeOnly("org.lwjgl","lwjgl", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl","lwjgl-assimp", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl","lwjgl-glfw", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl","lwjgl-openal", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl","lwjgl-stb", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl","lwjgl-vma", classifier = lwjglNatives, version = lwjglVersion)
     implementation("org.joml", "joml", jomlVersion)
     implementation("org.joml", "joml-primitives", `joml-primitivesVersion`)
 
@@ -64,6 +65,7 @@ tasks.test {
 
 application {
     mainClass = "gay.block36.voxel.MainKt"
+//    mainClass = "javavulkantutorial.Ch03PhysicalDeviceSelection"
 }
 
 kotlin {
