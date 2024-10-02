@@ -25,7 +25,6 @@ fun createInstance() {
             sType(VK10.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO)
             pApplicationInfo(appInfo)
             ppEnabledExtensionNames(getRequiredExtensions(stack))
-            ppEnabledLayerNames(null)
 
             if (VulkanInfo.VALIDATION_LAYERS_ENABLED && VulkanInfo.VALIDATION_LAYERS != null) {
                 ppEnabledLayerNames(
@@ -36,6 +35,10 @@ fun createInstance() {
                                 .forEach(this@layers::put)
                         }
                 )
+
+                val debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.calloc(stack)
+                populateDebugMessengerCreateInfo(debugCreateInfo)
+                pNext(debugCreateInfo.address())
             }
         }
 
