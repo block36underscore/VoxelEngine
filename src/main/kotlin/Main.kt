@@ -12,25 +12,24 @@ import kotlin.properties.Delegates
 
 
 fun main() {
-    initWindow()
-    initVulkan()
+    try {
+        initWindow()
+        initVulkan()
 
-    mainLoop@while (true) {
-        if (glfwWindowShouldClose(Window)) break@mainLoop
+        mainLoop@ while (true) {
+            if (glfwWindowShouldClose(Window)) break@mainLoop
 
-        glfwPollEvents()
-
-        Thread.sleep(WindowInfo.LOOP_PERIOD)
+            glfwPollEvents()
+        }
+    } finally {
+        cleanup()
     }
-
-    cleanup()
 }
 
 object WindowInfo {
     const val WIDTH = 1920
     const val HEIGHT = 1080
     const val TITLE = "Voxel Engine"
-    const val LOOP_PERIOD = 1000L/60L
 }
 
 var Window: Long by Delegates.notNull()
