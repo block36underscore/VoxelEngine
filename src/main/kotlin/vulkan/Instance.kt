@@ -27,14 +27,7 @@ fun createInstance() {
             ppEnabledExtensionNames(getRequiredExtensions(stack))
 
             if (VulkanInfo.VALIDATION_LAYERS_ENABLED && VulkanInfo.VALIDATION_LAYERS != null) {
-                ppEnabledLayerNames(
-                    stack.mallocPointer(VulkanInfo.VALIDATION_LAYERS.size)
-                        .apply layers@ {
-                            VulkanInfo.VALIDATION_LAYERS
-                                .mapNotNull(stack::UTF8Safe)
-                                .forEach(this@layers::put)
-                        }
-                )
+                ppEnabledLayerNames(validationLayersAsPointerBuffer(stack))
 
                 val debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.calloc(stack)
                 populateDebugMessengerCreateInfo(debugCreateInfo)

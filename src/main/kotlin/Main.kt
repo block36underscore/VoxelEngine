@@ -1,9 +1,6 @@
 package gay.block36.voxel
 
-import gay.block36.voxel.vulkan.DebugMessenger
-import gay.block36.voxel.vulkan.VulkanInfo
-import gay.block36.voxel.vulkan.destroyDebugUtilsMessengerEXT
-import gay.block36.voxel.vulkan.initVulkan
+import gay.block36.voxel.vulkan.*
 import org.lwjgl.glfw.GLFW.*
 import org.lwjgl.system.MemoryUtil.NULL
 import org.lwjgl.vulkan.VK10.*
@@ -17,13 +14,12 @@ fun main() {
         initVulkan()
 
         mainLoop@ while (true) {
-            if (glfwWindowShouldClose(Window)) break@mainLoop
-
             glfwPollEvents()
+            if (glfwWindowShouldClose(Window)) break@mainLoop
         }
     } finally {
-        cleanup()
     }
+    cleanup()
 }
 
 object WindowInfo {
@@ -52,6 +48,8 @@ private fun initWindow() {
 }
 
 private fun cleanup() {
+    vkDestroyDevice(Device, null)
+
     if (::Instance.isInitialized) {
         if (VulkanInfo.VALIDATION_LAYERS_ENABLED)
             destroyDebugUtilsMessengerEXT(Instance, DebugMessenger, null)

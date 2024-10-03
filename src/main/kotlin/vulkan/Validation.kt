@@ -2,11 +2,14 @@ package gay.block36.voxel.vulkan
 
 import gay.block36.voxel.Instance
 import gay.block36.voxel.vulkan.DebugCallback.debugCallback
+import gay.block36.voxel.vulkan.VulkanInfo.VALIDATION_LAYERS
+import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.vulkan.*
 import java.nio.LongBuffer
 import kotlin.properties.Delegates
+
 
 var DebugMessenger: Long by Delegates.notNull()
 
@@ -80,4 +83,13 @@ fun validationLayersSupported(): Boolean {
             }
         } ?: true
     }
+}
+
+fun validationLayersAsPointerBuffer(stack: MemoryStack): PointerBuffer {
+    return stack.mallocPointer(VALIDATION_LAYERS!!.size)
+        .apply layers@ {
+            VALIDATION_LAYERS
+                .mapNotNull(stack::UTF8Safe)
+                .forEach(this@layers::put)
+        }
 }

@@ -17,4 +17,5 @@ fun initVulkan() {
     createInstance()
     setupDebugMessenger()
     pickPhysicalDevice()
+    createLogicalDevice()
 }
