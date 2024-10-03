@@ -3,8 +3,6 @@ package gay.block36.voxel
 import gay.block36.voxel.vulkan.*
 import org.lwjgl.glfw.GLFW.*
 import org.lwjgl.system.MemoryUtil.NULL
-import org.lwjgl.vulkan.VK10.*
-import org.lwjgl.vulkan.VkInstance
 import kotlin.properties.Delegates
 
 
@@ -29,7 +27,6 @@ object WindowInfo {
 }
 
 var Window: Long by Delegates.notNull()
-lateinit var Instance: VkInstance
 
 private fun initWindow() {
     if (!glfwInit()) throw RuntimeException("Cannot init GLFW")
@@ -47,17 +44,3 @@ private fun initWindow() {
     if (Window == NULL) throw RuntimeException("Cannot create window")
 }
 
-private fun cleanup() {
-    vkDestroyDevice(Device, null)
-
-    if (::Instance.isInitialized) {
-        if (VulkanInfo.VALIDATION_LAYERS_ENABLED)
-            destroyDebugUtilsMessengerEXT(Instance, DebugMessenger, null)
-
-        vkDestroyInstance(Instance, null)
-    }
-
-    glfwDestroyWindow(Window)
-
-    glfwTerminate()
-}

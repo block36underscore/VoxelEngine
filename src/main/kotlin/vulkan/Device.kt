@@ -1,9 +1,9 @@
 package gay.block36.voxel.vulkan
 
-import gay.block36.voxel.Instance
 import gay.block36.voxel.util.iter
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.vulkan.*
+import org.lwjgl.vulkan.KHRSurface.vkGetPhysicalDeviceSurfaceSupportKHR
 import org.lwjgl.vulkan.VK10.*
 
 
@@ -26,7 +26,7 @@ fun pickPhysicalDevice() {
             .asSequence()
             .map {
                 VkPhysicalDevice(it, Instance)
-            }.filter(VkPhysicalDevice::isSuitable)
+            }
             .take(1)
             .forEach {
                 PhysicalDevice = it
@@ -37,13 +37,33 @@ fun pickPhysicalDevice() {
     }
 }
 
-private fun VkPhysicalDevice.isSuitable() = this.findQueueFamilies().graphicsFamily != null
 
-@JvmInline
-private value class QueueFamilyIndices(val graphicsFamily: Int? = null)
+data class QueueFamilyIndicesIncomplete (
+    val graphicsFamily: Int? = null,
+    val presentFamily: Int? = null,
+) {
+    val complete: Boolean
+        get() = this.graphicsFamily != null && this.presentFamily != null
+
+    fun intoComplete() =
+        if (this.complete) QueueFamilyIndices(
+            graphicsFamily!!,
+            presentFamily!!,
+        )
+        else throw IllegalArgumentException(
+            "Incomplete Queue Family Indices attempted to be converted to complete"
+        )
+}
+
+data class QueueFamilyIndices (
+    val graphicsFamily: Int,
+    val presentFamily: Int,
+) {
+    fun unique() = listOf(graphicsFamily, presentFamily).distinct()
+}
 
 private fun VkPhysicalDevice.findQueueFamilies(): QueueFamilyIndices {
-    var indicies = QueueFamilyIndices()
+    var indices = QueueFamilyIndicesIncomplete()
 
     MemoryStack.stackPush().use { stack ->
         val count = stack.ints(0)
@@ -54,30 +74,45 @@ private fun VkPhysicalDevice.findQueueFamilies(): QueueFamilyIndices {
 
         vkGetPhysicalDeviceQueueFamilyProperties(this, count, queueFamilies)
 
-        (0..<count[0]).asSequence().filter {
-            queueFamilies[it].queueFlags() and VK_QUEUE_GRAPHICS_BIT != 0
-        }.take(1)
-            .firstOrNull()
-            ?.let {
-                indicies = QueueFamilyIndices(it)
-            }
+        val presentSupport = stack.ints(VK_FALSE)
+
+        (0..<count[0]).forEach { index ->
+            if (queueFamilies[index].queueFlags() and VK_QUEUE_GRAPHICS_BIT != 0)
+                indices = indices.copy(graphicsFamily = index)
+
+            vkGetPhysicalDeviceSurfaceSupportKHR(
+                    this@findQueueFamilies,
+                    index,
+                    Surface,
+                    presentSupport)
+
+            if (presentSupport[0] != 0)
+                indices = indices.copy(presentFamily = index)
+
+            if (indices.complete) return@use
+        }
+        throw RuntimeException("No suitable physical devices")
     }
 
-    return indicies
+    return indices.intoComplete()
 }
 
 fun createLogicalDevice() {
     MemoryStack.stackPush().use { stack ->
-        val indicies = PhysicalDevice.findQueueFamilies()
-        require(indicies.graphicsFamily != null)
+        val indices = PhysicalDevice.findQueueFamilies()
 
-        val queueCreateInfos = VkDeviceQueueCreateInfo.calloc(1, stack).run {
-            sType(VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO)
-            queueFamilyIndex(indicies.graphicsFamily)
-            pQueuePriorities(stack.floats(1F))
-            return@run this
+        val uniqueQueueFamilies = indices.unique()
+        val queueCreateInfos = VkDeviceQueueCreateInfo.calloc(uniqueQueueFamilies.size, stack).run {
+            uniqueQueueFamilies.zip(this).forEach {
+                it.second.apply {
+                    sType(VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO)
+                    queueFamilyIndex(it.first)
+                    pQueuePriorities(stack.floats(1F))
+                }
+            }
+
+            return@run this@run
         }
-
 
         val deviceFeatures = VkPhysicalDeviceFeatures.calloc(stack)
 
@@ -97,10 +132,12 @@ fun createLogicalDevice() {
 
         Device = VkDevice(pDevice[0], PhysicalDevice, createInfo)
 
-        val pGraphicsQueue = stack.pointers(VK_NULL_HANDLE)
+        val pQueue = stack.pointers(VK_NULL_HANDLE)
 
-        vkGetDeviceQueue(Device, indicies.graphicsFamily, 0, pGraphicsQueue)
+        vkGetDeviceQueue(Device, indices.graphicsFamily, 0, pQueue)
+        GraphicsQueue = VkQueue(pQueue[0], Device)
 
-        GraphicsQueue = VkQueue(pGraphicsQueue[0], Device)
+        vkGetDeviceQueue(Device, indices.presentFamily, 0, pQueue)
+        PresentQueue = VkQueue(pQueue[0], Device)
     }
 }

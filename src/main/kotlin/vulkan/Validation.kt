@@ -1,6 +1,5 @@
 package gay.block36.voxel.vulkan
 
-import gay.block36.voxel.Instance
 import gay.block36.voxel.vulkan.DebugCallback.debugCallback
 import gay.block36.voxel.vulkan.VulkanInfo.VALIDATION_LAYERS
 import org.lwjgl.PointerBuffer

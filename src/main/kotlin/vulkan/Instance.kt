@@ -1,6 +1,5 @@
 package gay.block36.voxel.vulkan
 
-import gay.block36.voxel.Instance
 import gay.block36.voxel.WindowInfo
 import org.lwjgl.PointerBuffer
 import org.lwjgl.glfw.GLFWVulkan

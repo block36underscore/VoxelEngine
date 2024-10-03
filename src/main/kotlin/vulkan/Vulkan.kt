@@ -1,7 +1,14 @@
 package gay.block36.voxel.vulkan
 
+import gay.block36.voxel.Window
+import org.lwjgl.glfw.GLFW
 import org.lwjgl.system.Configuration.DEBUG
+import org.lwjgl.vulkan.KHRSurface.vkDestroySurfaceKHR
+import org.lwjgl.vulkan.VK10
+import org.lwjgl.vulkan.VkInstance
 
+
+lateinit var Instance: VkInstance
 
 object VulkanInfo {
     val VALIDATION_LAYERS_ENABLED: Boolean = DEBUG.get(true)
@@ -16,6 +23,23 @@ object VulkanInfo {
 fun initVulkan() {
     createInstance()
     setupDebugMessenger()
+    createSurface()
     pickPhysicalDevice()
     createLogicalDevice()
+}
+
+fun cleanup() {
+    VK10.vkDestroyDevice(Device, null)
+
+    if (::Instance.isInitialized) {
+        if (VulkanInfo.VALIDATION_LAYERS_ENABLED)
+            destroyDebugUtilsMessengerEXT(Instance, DebugMessenger, null)
+
+        vkDestroySurfaceKHR(Instance, Surface, null)
+        VK10.vkDestroyInstance(Instance, null)
+    }
+
+    GLFW.glfwDestroyWindow(Window)
+
+    GLFW.glfwTerminate()
 }
