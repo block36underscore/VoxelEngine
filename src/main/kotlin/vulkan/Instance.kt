@@ -1,6 +1,8 @@
 package gay.block36.voxel.vulkan
 
 import gay.block36.voxel.WindowInfo
+import gay.block36.voxel.util.asPointerBuffer
+import gay.block36.voxel.vulkan.VulkanInfo.VALIDATION_LAYERS
 import org.lwjgl.PointerBuffer
 import org.lwjgl.glfw.GLFWVulkan
 import org.lwjgl.system.MemoryStack
@@ -25,8 +27,8 @@ fun createInstance() {
             pApplicationInfo(appInfo)
             ppEnabledExtensionNames(getRequiredExtensions(stack))
 
-            if (VulkanInfo.VALIDATION_LAYERS_ENABLED && VulkanInfo.VALIDATION_LAYERS != null) {
-                ppEnabledLayerNames(validationLayersAsPointerBuffer(stack))
+            if (VulkanInfo.VALIDATION_LAYERS_ENABLED && VALIDATION_LAYERS != null) {
+                ppEnabledLayerNames(asPointerBuffer(stack, VALIDATION_LAYERS))
 
                 val debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.calloc(stack)
                 populateDebugMessengerCreateInfo(debugCreateInfo)

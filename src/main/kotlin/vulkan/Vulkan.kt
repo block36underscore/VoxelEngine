@@ -4,6 +4,7 @@ import gay.block36.voxel.Window
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.system.Configuration.DEBUG
 import org.lwjgl.vulkan.KHRSurface.vkDestroySurfaceKHR
+import org.lwjgl.vulkan.KHRSwapchain.vkDestroySwapchainKHR
 import org.lwjgl.vulkan.VK10
 import org.lwjgl.vulkan.VkInstance
 
@@ -26,9 +27,12 @@ fun initVulkan() {
     createSurface()
     pickPhysicalDevice()
     createLogicalDevice()
+    createSwapChain()
 }
 
 fun cleanup() {
+    vkDestroySwapchainKHR(Device, SwapChain, null)
+
     VK10.vkDestroyDevice(Device, null)
 
     if (::Instance.isInitialized) {

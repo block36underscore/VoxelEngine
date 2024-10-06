@@ -65,7 +65,7 @@ tasks.test {
 
 application {
     mainClass = "gay.block36.voxel.MainKt"
-//    mainClass = "javavulkantutorial.Ch03PhysicalDeviceSelection"
+//    mainClass = "javavulkantutorial.Ch06SwapChainCreation"
 }
 
 kotlin {

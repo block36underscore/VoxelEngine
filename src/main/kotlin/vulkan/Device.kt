@@ -1,15 +1,22 @@
 package gay.block36.voxel.vulkan
 
+import gay.block36.voxel.util.asPointerBuffer
 import gay.block36.voxel.util.iter
+import gay.block36.voxel.vulkan.VulkanInfo.VALIDATION_LAYERS
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.vulkan.*
 import org.lwjgl.vulkan.KHRSurface.vkGetPhysicalDeviceSurfaceSupportKHR
+import org.lwjgl.vulkan.KHRSwapchain.VK_KHR_SWAPCHAIN_EXTENSION_NAME
 import org.lwjgl.vulkan.VK10.*
 
 
 lateinit var PhysicalDevice: VkPhysicalDevice
 lateinit var Device: VkDevice
 lateinit var GraphicsQueue: VkQueue
+
+val DEVICE_EXTENSIONS = listOf(
+    VK_KHR_SWAPCHAIN_EXTENSION_NAME,
+)
 
 fun pickPhysicalDevice() {
     MemoryStack.stackPush().use { stack ->
@@ -27,6 +34,7 @@ fun pickPhysicalDevice() {
             .map {
                 VkPhysicalDevice(it, Instance)
             }
+            .filter(VkPhysicalDevice::isSuitable)
             .take(1)
             .forEach {
                 PhysicalDevice = it
@@ -37,6 +45,46 @@ fun pickPhysicalDevice() {
     }
 }
 
+fun VkPhysicalDevice.isSuitable(): Boolean {
+    val indices = this.findQueueFamilies()
+
+    val extensionsSupported: Boolean = this.areExtensionsSupported()
+    var swapChainAdequate = false
+    if (areExtensionsSupported()) {
+        MemoryStack.stackPush().use { stack ->
+            querySwapChainSupport(stack).run {
+                swapChainAdequate = this.formats.hasRemaining() && this.presentModes.hasRemaining()
+            }
+        }
+    }
+
+    return indices.complete && extensionsSupported && swapChainAdequate
+}
+
+fun VkPhysicalDevice.areExtensionsSupported(): Boolean {
+    MemoryStack.stackPush().use { stack ->
+        val extensionCount = stack.ints(1)
+
+        vkEnumerateDeviceExtensionProperties(
+            this,
+            null as String?,
+            extensionCount,
+            null
+        )
+
+        val availableExtensions = VkExtensionProperties.malloc(extensionCount[0], stack)
+        vkEnumerateDeviceExtensionProperties(
+            this,
+            null as String?,
+            extensionCount,
+            availableExtensions
+        )
+
+        return@areExtensionsSupported availableExtensions
+            .map(VkExtensionProperties::extensionNameString)
+            .containsAll(DEVICE_EXTENSIONS)
+    }
+}
 
 data class QueueFamilyIndicesIncomplete (
     val graphicsFamily: Int? = null,
@@ -45,13 +93,9 @@ data class QueueFamilyIndicesIncomplete (
     val complete: Boolean
         get() = this.graphicsFamily != null && this.presentFamily != null
 
-    fun intoComplete() =
-        if (this.complete) QueueFamilyIndices(
+    fun intoComplete() = QueueFamilyIndices(
             graphicsFamily!!,
             presentFamily!!,
-        )
-        else throw IllegalArgumentException(
-            "Incomplete Queue Family Indices attempted to be converted to complete"
         )
 }
 
@@ -60,9 +104,13 @@ data class QueueFamilyIndices (
     val presentFamily: Int,
 ) {
     fun unique() = listOf(graphicsFamily, presentFamily).distinct()
+
+    fun toArray(): IntArray {
+        return intArrayOf(graphicsFamily, presentFamily)
+    }
 }
 
-private fun VkPhysicalDevice.findQueueFamilies(): QueueFamilyIndices {
+fun VkPhysicalDevice.findQueueFamilies(): QueueFamilyIndicesIncomplete {
     var indices = QueueFamilyIndicesIncomplete()
 
     MemoryStack.stackPush().use { stack ->
@@ -94,12 +142,12 @@ private fun VkPhysicalDevice.findQueueFamilies(): QueueFamilyIndices {
         throw RuntimeException("No suitable physical devices")
     }
 
-    return indices.intoComplete()
+    return indices
 }
 
 fun createLogicalDevice() {
     MemoryStack.stackPush().use { stack ->
-        val indices = PhysicalDevice.findQueueFamilies()
+        val indices = PhysicalDevice.findQueueFamilies().intoComplete()
 
         val uniqueQueueFamilies = indices.unique()
         val queueCreateInfos = VkDeviceQueueCreateInfo.calloc(uniqueQueueFamilies.size, stack).run {
@@ -120,9 +168,15 @@ fun createLogicalDevice() {
             sType(VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO)
             pQueueCreateInfos(queueCreateInfos)
             pEnabledFeatures(deviceFeatures)
+            ppEnabledExtensionNames(asPointerBuffer(stack, DEVICE_EXTENSIONS).also {
+                println("Extensions:")
+                it.iter().forEach {
+                    println(it)
+                }
+            })
 
             if (VulkanInfo.VALIDATION_LAYERS_ENABLED)
-                ppEnabledLayerNames(validationLayersAsPointerBuffer(stack))
+                ppEnabledLayerNames(asPointerBuffer(stack, VALIDATION_LAYERS!!))
         }
 
         val pDevice = stack.pointers(VK_NULL_HANDLE)

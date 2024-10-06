@@ -83,12 +83,3 @@ fun validationLayersSupported(): Boolean {
         } ?: true
     }
 }
-
-fun validationLayersAsPointerBuffer(stack: MemoryStack): PointerBuffer {
-    return stack.mallocPointer(VALIDATION_LAYERS!!.size)
-        .apply layers@ {
-            VALIDATION_LAYERS
-                .mapNotNull(stack::UTF8Safe)
-                .forEach(this@layers::put)
-        }
-}
