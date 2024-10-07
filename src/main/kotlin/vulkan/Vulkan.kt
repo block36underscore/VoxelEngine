@@ -6,6 +6,7 @@ import org.lwjgl.system.Configuration.DEBUG
 import org.lwjgl.vulkan.KHRSurface.vkDestroySurfaceKHR
 import org.lwjgl.vulkan.KHRSwapchain.vkDestroySwapchainKHR
 import org.lwjgl.vulkan.VK10
+import org.lwjgl.vulkan.VK10.vkDestroyImageView
 import org.lwjgl.vulkan.VkInstance
 
 
@@ -28,9 +29,15 @@ fun initVulkan() {
     pickPhysicalDevice()
     createLogicalDevice()
     createSwapChain()
+    createImageViews()
 }
 
 fun cleanup() {
+
+    SwapChainImageViews.forEach {
+        vkDestroyImageView(Device, it, null)
+    }
+
     vkDestroySwapchainKHR(Device, SwapChain, null)
 
     VK10.vkDestroyDevice(Device, null)

@@ -158,7 +158,7 @@ fun createSwapChain() {
 
         vkGetSwapchainImagesKHR(Device, SwapChain, imageCount, pSwapchainImages)
 
-        SwapChainImages = arrayListOf(imageCount[0].toLong())
+        SwapChainImages = ArrayList(imageCount[0])
 
         for (i in 0 until pSwapchainImages.capacity()) {
             SwapChainImages.add(pSwapchainImages[i])

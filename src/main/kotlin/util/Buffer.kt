@@ -1,6 +1,5 @@
 package gay.block36.voxel.util
 
-import gay.block36.voxel.vulkan.VulkanInfo.VALIDATION_LAYERS
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryStack
 import java.nio.IntBuffer
