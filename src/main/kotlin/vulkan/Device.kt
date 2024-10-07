@@ -169,7 +169,6 @@ fun createLogicalDevice() {
             pQueueCreateInfos(queueCreateInfos)
             pEnabledFeatures(deviceFeatures)
             ppEnabledExtensionNames(asPointerBuffer(stack, DEVICE_EXTENSIONS).also {
-                println("Extensions:")
                 it.iter().forEach {
                     println(it)
                 }
