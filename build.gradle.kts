@@ -48,12 +48,12 @@ dependencies {
     implementation("org.lwjgl:lwjgl-stb:$lwjglVersion")
     implementation("org.lwjgl:lwjgl-vma:$lwjglVersion")
     implementation("org.lwjgl:lwjgl-vulkan:$lwjglVersion")
-    runtimeOnly("org.lwjgl","lwjgl", classifier = lwjglNatives, version = lwjglVersion)
-    runtimeOnly("org.lwjgl","lwjgl-assimp", classifier = lwjglNatives, version = lwjglVersion)
-    runtimeOnly("org.lwjgl","lwjgl-glfw", classifier = lwjglNatives, version = lwjglVersion)
-    runtimeOnly("org.lwjgl","lwjgl-openal", classifier = lwjglNatives, version = lwjglVersion)
-    runtimeOnly("org.lwjgl","lwjgl-stb", classifier = lwjglNatives, version = lwjglVersion)
-    runtimeOnly("org.lwjgl","lwjgl-vma", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl", "lwjgl", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl", "lwjgl-assimp", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl", "lwjgl-glfw", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl", "lwjgl-openal", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl", "lwjgl-stb", classifier = lwjglNatives, version = lwjglVersion)
+    runtimeOnly("org.lwjgl", "lwjgl-vma", classifier = lwjglNatives, version = lwjglVersion)
     implementation("org.joml", "joml", jomlVersion)
     implementation("org.joml", "joml-primitives", `joml-primitivesVersion`)
 
@@ -70,4 +70,75 @@ application {
 
 kotlin {
     jvmToolchain(21)
+}
+
+
+tasks.register("compileShaders") {
+    println("test: ${temporaryDir.absolutePath}")
+
+    doLast {
+
+        sourceSets.filter { it.name != "test" }.forEach {
+            it.resources.sourceDirectories.forEach { resourcesDir ->
+                File("${resourcesDir.absolutePath}/assets").listFiles()
+                    ?.filter { namespace -> namespace.isDirectory }
+                    ?.forEach { namespace ->
+                        File(namespace, "/shaders").compileShaderFiles(namespace.name)
+                            .map { file ->
+                                File(
+                                    "${namespace.path}/shaders",
+                                    "/${file.split(":")[1]}"
+                                ) to File(
+                                    temporaryDir,
+                                    "${file.split(":")[0]}/${file.split(":")[1].split(".")[0]}.spv"
+                                )
+                            }
+                            .forEach { files ->
+                                files.second.parentFile.mkdirs()
+                                ProcessBuilder(
+                                    listOf(
+                                        "naga",
+                                        files.first.path,
+                                        files.second.path,
+                                    )
+                                ).redirectOutput(ProcessBuilder.Redirect.INHERIT)
+                                    .redirectError(ProcessBuilder.Redirect.INHERIT)
+                                    .start()
+                                    .waitFor()
+
+                                copy {
+                                    from("$rootDir/build/tmp/compileShaders/${namespace.name}") {
+                                        println(files.second.absolutePath.removePrefix("$rootDir/build/tmp/compileShaders/${namespace.name}/"))
+                                        include(files.second.absolutePath.removePrefix("$rootDir/build/tmp/compileShaders/${namespace.name}/"))
+                                    }
+                                    into("$rootDir/build/resources/main/assets/${namespace.name}/shaders")
+                                }
+                            }
+                    }
+            }
+        }
+    }
+}
+
+fun File.compileShaderFiles(namespace: String, pathIn: String = ""): ArrayList<String> {
+    val path = pathIn.removePrefix("/")
+    val output = ArrayList<String>()
+    listFiles()
+        ?.filter(File::isDirectory)
+        ?.forEach { output.addAll(it.compileShaderFiles(namespace, "$path/${it.name}")) }
+
+    listFiles()
+        ?.filter(File::isFile)
+        ?.filter {
+            arrayOf("wgsl").contains(it.extension)
+        }?.forEach {
+            output.add("${namespace}:$path${if (path != "") "/" else ""}${it.name}")
+        }
+
+    return output
+}
+
+
+tasks.processResources {
+    dependsOn(tasks.getByName("compileShaders"))
 }

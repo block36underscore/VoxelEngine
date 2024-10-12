@@ -1,6 +1,7 @@
 package gay.block36.voxel.vulkan
 
 import gay.block36.voxel.Window
+import gay.block36.voxel.vulkan.pipeline.createGraphicsPipeline
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.system.Configuration.DEBUG
 import org.lwjgl.vulkan.KHRSurface.vkDestroySurfaceKHR
@@ -30,6 +31,7 @@ fun initVulkan() {
     createLogicalDevice()
     createSwapChain()
     createImageViews()
+    createGraphicsPipeline()
 }
 
 fun cleanup() {
